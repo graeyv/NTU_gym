@@ -1,0 +1,27 @@
+name: Gym Number Scraper
+
+# Schedule the job to run every 15 minutes
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install requests beautifulsoup4
+
+    - name: Run the scraper
+      run: |
+        python gym_nbr.py

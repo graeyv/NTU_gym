@@ -33,6 +33,7 @@ jobs:
         git config --global user.name "graeyv"
         git add scraped_data.csv
         git commit -m "Update scraped data"
-        git push
+        git pull
+        git push origin main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # This will automatically use a GitHub-provided token

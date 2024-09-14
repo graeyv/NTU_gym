@@ -3,8 +3,9 @@ from bs4 import BeautifulSoup
 import csv
 from datetime import datetime
 
-# Scrape the number of people in the gym
+# scrape nbr of people in gym
 def scrape_gym_nbr():
+
     url = 'https://rent.pe.ntu.edu.tw/'
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
@@ -17,18 +18,17 @@ def scrape_gym_nbr():
         return number
     return None
 
-# Store data in a CSV file
+# store data
 def store_data():
     number = scrape_gym_nbr()
     if number:
-        # Create or append to the CSV file with a timestamp and the scraped number
+        # Store the number with a timestamp in a CSV file
         with open('scraped_data.csv', 'a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow([datetime.now(), number])
     else:
         print("No number found or error in scraping.")
 
-# Run the store_data function
+# run store data function
 store_data()
-
 

@@ -3,9 +3,27 @@ name: Gym Number Scraper
 # Schedule the job to run every 15 minutes
 on:
   schedule:
-    - cron: "*/15 * * * *"
-  workflow_dispatch:
-
+    # Saturday: 9 AM - 9:30 PM (GMT+8) -> 1 AM - 1:30 PM (UTC)
+    - cron: "*/15 1-13 * * 6"
+    
+    # Sunday: 9 AM - 5:30 PM (GMT+8) -> 1 AM - 9:30 AM (UTC)
+    - cron: "*/15 1-9 * * 0"
+    
+    # Monday: 8 AM - 9:30 PM (GMT+8) -> 12 AM - 1:30 PM (UTC)
+    - cron: "*/15 0-13 * * 1"
+    
+    # Tuesday: 8 AM - 9:30 PM (GMT+8) -> 12 AM - 1:30 PM (UTC)
+    - cron: "*/15 0-13 * * 2"
+    
+    # Wednesday: 8 AM - 9:30 PM (GMT+8) -> 12 AM - 1:30 PM (UTC)
+    - cron: "*/15 0-13 * * 3"
+    
+    # Thursday: 8 AM - 9:30 PM (GMT+8) -> 12 AM - 1:30 PM (UTC)
+    - cron: "*/15 0-13 * * 4"
+    
+    # Friday: 8 AM - 9:30 PM (GMT+8) -> 12 AM - 1:30 PM (UTC)
+    - cron: "*/15 0-13 * * 5"
+    
 jobs:
   scrape:
     runs-on: ubuntu-latest

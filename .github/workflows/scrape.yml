@@ -25,3 +25,13 @@ jobs:
     - name: Run the scraper
       run: |
         python gym_nbr.py
+
+    - name: Commit and push the CSV file back to the repository
+      run: |
+        git config --global user.email "your-email@example.com"
+        git config --global user.name "your-username"
+        git add scraped_data.csv
+        git commit -m "Update scraped data"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # This will automatically use a GitHub-provided token

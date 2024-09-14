@@ -29,8 +29,8 @@ jobs:
 
     - name: Commit and push the CSV file back to the repository
       run: |
-        git config --global user.email "your-email@example.com"
-        git config --global user.name "your-username"
+        git config --global user.email "y.graedel@gmail.com"
+        git config --global user.name "graeyv"
         git add scraped_data.csv
         git commit -m "Update scraped data"
         git push

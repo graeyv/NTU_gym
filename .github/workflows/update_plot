@@ -1,0 +1,30 @@
+name: Run Jupyter Notebook
+
+# Controls when the workflow will run
+on:
+  schedule:
+    # Runs every two days at midnight
+    - cron: '0 0 */2 * *'
+
+# Workflow jobs
+jobs:
+  run-notebook:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install notebook
+
+    - name: Run Jupyter Notebook
+      run: |
+        jupyter nbconvert --to notebook --execute your_notebook.ipynb --output executed_notebook.ipynb

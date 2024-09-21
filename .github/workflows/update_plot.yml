@@ -27,4 +27,4 @@ jobs:
 
     - name: Run Jupyter Notebook
       run: |
-        jupyter nbconvert --to notebook --execute your_notebook.ipynb --output executed_notebook.ipynb
+        jupyter nbconvert --to notebook --execute plot_avg_gym_count.ipynb --output executed_notebook.ipynb

@@ -5,7 +5,8 @@ on:
   schedule:
     # Runs every two days at midnight
     - cron: '0 0 */2 * *'
-
+  workflow_dispatch:
+  
 # Workflow jobs
 jobs:
   run-notebook:

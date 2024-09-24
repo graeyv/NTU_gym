@@ -1,15 +1,15 @@
-name: Run Jupyter Notebook
+name: Run Python Script
 
 # Controls when the workflow will run
 on:
   schedule:
     # Runs every two days at midnight
     - cron: '0 0 */2 * *'
-  workflow_dispatch:
-  
+  workflow_dispatch:  # This allows manual triggering
+
 # Workflow jobs
 jobs:
-  run-notebook:
+  run-script:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,8 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install notebook pandas matplotlib
+        pip install pandas matplotlib
 
-    - name: Run Jupyter Notebook
-      run: |
-        jupyter nbconvert --to notebook --execute plot_avg_gym_count.ipynb --output executed_notebook.ipynb
+    - name: Run Python script
+      run: python plot_avg_gym_count.py

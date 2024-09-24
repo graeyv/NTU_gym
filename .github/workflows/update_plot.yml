@@ -1,4 +1,4 @@
-name: Run Python Script
+name: Run Python Script and Save Image
 
 # Controls when the workflow will run
 on:
@@ -28,3 +28,12 @@ jobs:
 
     - name: Run Python script
       run: python plot_avg_gym_count.py
+
+    - name: Commit and Push the updated image
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'actions@github.com'
+        git add average_count_per_hour.png
+        git commit -m "Add updated gym usage plot"
+        git push
+
